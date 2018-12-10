@@ -1,0 +1,59 @@
+﻿@model NewGameModel
+@{
+    ViewBag.Title = "Pony Game";
+}
+
+
+<div class="py-5 text-center">
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="mb-3">New Game</h4>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-game" }))
+        {
+            <div class="alert alert-danger" role="alert">
+                @Html.ValidationSummary()
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="Name">Pony Name</label>
+                    @Html.DropDownListFor(t => t.Name, EnumHelper.GetSelectList(typeof(PonyName)), new { @class = "form-control" })
+                    <div class="invalid-feedback">
+                        Valid pony name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="Difficulty">Difficulty</label>
+                    @Html.DropDownListFor(f => f.SelectedDifficulty, EnumHelper.GetSelectList(typeof(Difficulty)), new { @class = "custom-select d-block w-100" })
+                    <div class="invalid-feedback">
+                        Please select difficulty.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="Width">Width</label>
+                    @Html.DropDownListFor(f => f.Width, Enumerable.Range(15, 11).Select(s => new SelectListItem { Text = s.ToString(), Value = s.ToString() }), new { @class = "custom-select d-block w-100" })
+                    <div class="invalid-feedback">
+                        Please select width.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="Height">Height</label>
+                    @Html.DropDownListFor(f => f.Height, Enumerable.Range(15, 11).Select(s => new SelectListItem { Text = s.ToString(), Value = s.ToString() }), new { @class = "custom-select d-block w-100" })
+                    <div class="invalid-feedback">
+                        Please select height.
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Start Game</button>
+        }
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

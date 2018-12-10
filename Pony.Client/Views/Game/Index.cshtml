@@ -1,0 +1,77 @@
+﻿@model DisplayModel
+@{
+    ViewBag.Title = "Display";
+
+}
+@section head
+{
+    <a class="btn btn-outline-primary" href="@Url.Action("index", "home")">New Game</a>
+}
+@Html.AntiForgeryToken()
+<div class="d-flex bd-highlight">
+    <div class="p-2 flex-grow-1 bd-highlight">
+        @*@Html.Action("Print", "Game")*@
+        <div class="bd-example">
+            <pre id="print" style="word-wrap: break-word; white-space: pre-wrap;">
+            </pre>
+        </div>
+    </div>
+    <div class="p-2 bd-highlight">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary btn-sm btn-block" onclick="moveFunc('@Model.Id',1)">U</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-sm btn-block" onclick="moveFunc('@Model.Id',3)">L</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-sm btn-block" onclick="moveFunc('@Model.Id',0)">S</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-sm btn-block" onclick="moveFunc('@Model.Id',4)">R</button>
+            </div>
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary btn-sm btn-block" onclick="moveFunc('@Model.Id',2)">D</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button id="autodirect" type="button" class="btn btn-primary btn-sm btn-block" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" onclick="moveFunc('@Model.Id',5)">Auto Direct</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Help</div>
+                    <div class="card-body">
+                        <h6 class="card-title">U Button</h6>
+                        <p class="card-text">Move North</p>
+                        <h6 class="card-title">D Button</h6>
+                        <p class="card-text">Move South</p>
+                        <h6 class="card-title">L Button</h6>
+                        <p class="card-text">Move East</p>
+                        <h6 class="card-title">R Button</h6>
+                        <p class="card-text">Move Right</p>
+                        <h6 class="card-title">S Button</h6>
+                        <p class="card-text">Stay in place</p>
+                        <h6 class="card-title">Auto Direct Button</h6>
+                        <p class="card-text">Find auto direction and move</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/site")
+    <script>
+        $(document).ready(function () {
+            print('@Model.Id');
+        });
+    </script>
+}
+
+
+

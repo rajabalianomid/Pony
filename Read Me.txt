@@ -1,0 +1,29 @@
+Pony Challenge API
+Help the pony escape the Domokun!
+1. Create your maze API call (dimensions 15 to 25) + valid pony name
+2. Get the maze with the ID from 1: you will get pony (player) location, Domokun (monster) location and maze walls
+3. Move your pony (until you are dead or you reach the end-point)
+(you can also print the maze with the API)
+
+pony-challenge Show/Hide List Operations Expand Operations
+POST /pony-challenge/maze
+create new maze game
+
+GET /pony-challenge/maze/{maze-id}
+get maze current state
+
+POST /pony-challenge/maze/{maze-id}
+make next move in the maze
+
+GET /pony-challenge/maze/{maze-id}/print
+get visual of the current state of the maze
+
+-------------------------------------------------------------------------------------------------
+
+Speaking of which: a few days ago, one of our shiny little friends was roaming around Ponyville when she saw a rainbow. The pony was mesmerized by the lights and immediately decided to follow the trail of colors. Maybe this time she would finally get to the end of the rainbow!
+
+Unfortunately, our little pony was so distracted that she didn’t see the tangled maze in front of her, and… Oh no! Now she is lost and cannot find her way out!
+
+Every maze worthy of its name has a monster protecting it - oh no, it’s a Domokun! It is now very angry and is chasing our little friend.
+
+Will you help our trapped pony find her way through the maze and rescue her from the Domokun?
